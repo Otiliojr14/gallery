@@ -18,9 +18,9 @@
             //     echo $user->user_name;
             // }
 
-            // $user = User::find_user_by_id(1);
+            $user = User::find_user_by_id(2);
 
-            // echo ($user->user_name);
+            echo $user->user_name;
             ?>
             <ol class="breadcrumb">
                 <li>

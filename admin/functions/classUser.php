@@ -18,9 +18,12 @@ class User
     {
         $result_user = self::query_consult("SELECT * FROM users WHERE id_user = {$user_id} LIMIT 1");
 
-
-        foreach ($result_user as $user) {
-            return $user;
+        if (!empty($result_user)) {
+            foreach ($result_user as $user) {
+                return $user;
+            }
+        } else {
+            return false;
         }
     }
 
