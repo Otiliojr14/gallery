@@ -3,7 +3,7 @@
 class DB
 {
     // Inicializando la variable conexion
-    protected $conn;
+    public $conn;
 
     public function __construct($host, $user, $password, $database)
     {

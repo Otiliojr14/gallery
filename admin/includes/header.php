@@ -2,10 +2,6 @@
 
 require_once("./functions/init.php");
 
-if (!$session->is_signed_in()) {
-    redirect("login.php");
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +18,7 @@ if (!$session->is_signed_in()) {
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="css/sweetalert2.min.css" href="style.css">
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">

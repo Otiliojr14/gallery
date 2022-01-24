@@ -9,19 +9,40 @@
             </h1>
 
             <?php
+            
+            // $user = new User();
 
-            // $users = User::find_all_users();
+            // $user->user_name = "ana86";
+            // $user->user_password = "orh";
+            // $user->first_name = "Ana";
+            // $user->last_name = "Let";
 
-            // var_dump($users);
+            // var_dump($user->save());
 
-            // foreach ($users as $user) {
-            //     echo $user->user_name;
-            // }
+            $user = User::find_user_by_id(12);
 
-            $user = User::find_user_by_id(2);
+            $user->user_name = 'alan2003';
 
-            echo $user->user_name;
+            $user->last_name = 'Flojo';
+
+            var_dump($user->save());
+
+            // $user = User::find_user_by_id(3);
+
+            // var_dump($user->delete());
+
+            // $user = User::find_user_by_id(3);
+            // $user->first_name = "Yazkin";
+            // $user->user_name = "yazkin73";
+
+            // $user->save();
+
+            // $user = User::find_user_by_id(4);
+
+            // $user->delete();
+            
             ?>
+
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
