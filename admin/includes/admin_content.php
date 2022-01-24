@@ -9,7 +9,7 @@
             </h1>
 
             <?php
-            
+
             // $user = new User();
 
             // $user->user_name = "ana86";
@@ -19,28 +19,45 @@
 
             // var_dump($user->save());
 
-            $user = User::find_user_by_id(12);
+            // $user = User::find_user_by_id(12);
 
-            $user->user_name = 'alan2003';
+            // $user->user_name = 'alan2003';
 
-            $user->last_name = 'Flojo';
+            // $user->last_name = 'Flojo';
 
-            var_dump($user->save());
+            // var_dump($user->save());
 
             // $user = User::find_user_by_id(3);
 
             // var_dump($user->delete());
 
-            // $user = User::find_user_by_id(3);
-            // $user->first_name = "Yazkin";
-            // $user->user_name = "yazkin73";
+            // $user = User::find_by_id(2);
+            // $user->user_name = "toidloidjr";
 
             // $user->save();
 
-            // $user = User::find_user_by_id(4);
+            // $user = User::find_by_id(3);
 
-            // $user->delete();
-            
+            // var_dump($user->delete());
+
+            // $user = User::find_by_id(2);
+
+            // var_dump($user->user_name);
+
+            // $photos = Photo::find_all();
+
+            // foreach ($photos as $photo) {
+            //     echo $photo->photo_title;
+            // }
+
+            // $photo = new Photo();
+
+            // $photo->photo_title = "Photo of my house";
+            // $photo->photo_description = "Photo in 2022";
+            // $photo->photo_size = 11;
+
+            // var_dump($photo->save());
+
             ?>
 
             <ol class="breadcrumb">
