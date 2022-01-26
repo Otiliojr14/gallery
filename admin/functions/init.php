@@ -16,7 +16,7 @@ date_default_timezone_set(ZONA_HORARIA);
 
 $conn = new DB(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 
-require_once __DIR__ . './classDB_table.php';
+require_once __DIR__ . './classDBTable.php';
 require_once __DIR__ . './classUser.php';
 require_once __DIR__ . './classPhoto.php';
 require_once __DIR__ . './classSession.php';
