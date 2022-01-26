@@ -1,6 +1,6 @@
 <?php
-
-class Db_table
+// Clase con los metodos de CRUD para cada tabla de la base de datos
+class DbTable
 {
     // Método que permite encontrar todos los usuarios registrados
     public static function find_all()
@@ -36,6 +36,8 @@ class Db_table
                 // Crea un objeto para cada registro
                 $object_array[] = static::instatiation($row);
             }
+
+            $result_set->close();
 
             return $object_array;
         } catch (Exception $e) {
@@ -81,7 +83,8 @@ class Db_table
 
     public function save()
     {
-        return isset($this->id_user) ? $this->update() : $this->create();
+        $id_field = static::$db_id;
+        return isset($this->$id_field) ? $this->update() : $this->create();
     }
 
     public function create()
@@ -109,9 +112,9 @@ class Db_table
             $stmt->execute();
 
             if ($stmt->affected_rows) {
-                $this->id_user = $stmt->insert_id;
+                static::$db_id = $stmt->insert_id;
 
-                // echo $this->id_user;
+                echo static::$db_id;
                 return true;
             } else {
                 return false;
@@ -125,8 +128,9 @@ class Db_table
     public function update()
     {
         global $conn;
+        $id_field = static::$db_id;
+        $id = $this->$id_field;
 
-        $id = $this->id_user;
         $properties = $this->get_fields();
         $properties = filter_var_array($properties, FILTER_SANITIZE_STRING);
 
@@ -144,7 +148,7 @@ class Db_table
         $properties_sql = implode(", ", $properties_pairs);
 
         try {
-            $query = "UPDATE " . static::$db_table . " SET {$properties_sql} WHERE id_user = ? ";
+            $query = "UPDATE " . static::$db_table . " SET {$properties_sql} WHERE " . static::$db_id . " = ? ";
             $type = static::$db_table_fields_type . "i";
 
             $stmt = $conn->conn->prepare($query);
@@ -162,10 +166,12 @@ class Db_table
     {
         global $conn;
 
-        $id = $this->id_user;
+        $id_field = static::$db_id;
+
+        $id = $this->$id_field;
 
         try {
-            $query = "DELETE FROM " . static::$db_table . " WHERE id_user = ? LIMIT 1";
+            $query = "DELETE FROM " . static::$db_table . " WHERE " . static::$db_id . " = ? LIMIT 1";
             $type = 'i';
             $data = array(&$id);
 
@@ -178,5 +184,24 @@ class Db_table
             echo "Error! : " . $e->getMessage();
             return false;
         }
+    }
+    
+    // Get properties of the object
+    public function __get($property)
+    {
+        if (property_exists($this, $property)) {
+            return $this->$property;            
+        }
+    }
+
+    // Set properties of the object
+
+    public function __set($property, $value)
+    {
+        if (property_exists($this, $property)) {
+            $this->$property = $value;
+        }   
+
+        return $this;
     }
 }

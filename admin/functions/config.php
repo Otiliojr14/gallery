@@ -4,7 +4,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-define('URL_SITIO', 'http://localhost/agendaEventos');
+define('INCLUDES_PATH', 'http://localhost/gallery');
 define('ZONA_HORARIA', 'America/Mexico_City');
 define('IDIOMA_SITIO', ['es', 'spa', 'es_MX']);
 

@@ -1,5 +1,9 @@
 <?php include("includes/header.php"); ?>
 
+if (!$session->is_signed_in()) {
+    redirect("login.php");
+}
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             
@@ -22,14 +26,17 @@
                         Upload
                         <small>Subheading</small>
                     </h1>
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                        </li>
-                        <li class="active">
-                            <i class="fa fa-file"></i> Blank Page
-                        </li>
-                    </ol>
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- /.row -->
